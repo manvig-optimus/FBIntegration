@@ -1,0 +1,142 @@
+﻿@model FacebookIntegration.Models.UserInfo
+@{
+    ViewBag.Title = "User Details";
+}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+        function ExportData() {
+            $.ajax(
+            {
+                url: "/User/ExportData",
+                cache: false,
+                async: false,
+                dataType: "text",
+                type: 'GET',
+                data: {},
+                success: function (data) {
+                    if (data != "") {
+                        alert("Data has been exported successfully at location: \n'" + data + "'.");
+                    }
+                    else {
+                        alert("Oops..Export Operation failed due to some error.");
+                    }
+                }
+            });
+        }
+</script>
+
+<body style="width: 700px; height: 470px; border: 1px groove;">
+    <form id="userInfo" method="post">
+        <div style="display: inline-block">
+            <h1 style="width: 500px; text-align: center; padding-top: 20px; float: left;">User Details
+            </h1>
+            <h3 style="width: 150px; float: right; padding-top: 20px; color: blue;">
+                <a href="/Account/logout" style="float: right;">Logout</a>
+            </h3>
+        </div>
+
+        <div style="width: 420px; margin-left: 30px; border: 2px solid; padding: 10px;">
+            <table style="padding-left: 20px; width: 420px; height: 280px;">
+                <tr>
+                    <td>
+                        <b>First Name:</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Middle Name:</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.MiddleName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Last Name:</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.LastName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Email:</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Gender:</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Gender)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Interested In:</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.InterestedIn)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Number of Friends:</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.FriendsCount)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Designation:</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Position)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Company:</b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.CompanyName)
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 420px; margin-left: 30px; padding: 20px;">
+            <table style="width: 620px;">
+                <tr>
+                    <td style="width: 80px;">
+                        <b>More Info:</b>
+                    </td>
+                    <td>
+                        <select style="width: 130px; border: 1px solid;" name="ViewMoreInfo">
+                            <option value="AlbumDetails">Uploaded Albums</option>
+                            <option value="Events">Events</option>
+                            <option value="Videos">Uploaded Videos</option>
+                            <option value="Places">Tagged Places</option>
+                        </select>
+                    </td>
+                    <td style="width: 300px;">&nbsp;&nbsp;&nbsp;
+                        <input type="submit" value="Go" name="Go"
+                            style="font-weight: bold; width: 50px; height: 25px; border: 1px solid;">
+                    </td>
+                    <td>
+                        <input type="button" value="Export Data"
+                            style="font-weight: bold; width: 100px; height: 25px; border: 1px solid; float: right;"
+                            onclick="ExportData()">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<FacebookIntegration.Models.UploadedVideo>
+@{
+    ViewBag.Title = "Videos";
+}
+
+<h1 style="width: 600px; text-align: center;">Uploaded Video Details
+</h1>
+
+<table style="border: 1px solid; padding: 10px; width: 600px; margin: 30px;">
+    <tr style="text-align: left; height: 30px;">
+        <th>Video Description
+        </th>
+        <th>Upload Date
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="height: 20px;">
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadDate)
+            </td>
+        </tr>
+    }
+</table>
+
+<a href="/User/UserInfo" style="font-weight: bold; font-size: 20px; padding-left: 40px;">Back</a>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FacebookIntegration.Models.UserTaggedPlace>
+@{
+    ViewBag.Title = "Places";
+}
+
+<h1 style="width: 900px; text-align: center;">Tagged Places
+</h1>
+
+<table style="border: 1px solid; padding: 10px; width: 900px; margin: 30px;">
+    <tr style="text-align: left; height: 30px;">
+        <th>Place
+        </th>
+        <th>Street
+        </th>
+        <th>Date of Tagging
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="height: 20px;">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaggedTime)
+            </td>
+        </tr>
+    }
+</table>
+
+<a href="/User/UserInfo" style="font-weight: bold; font-size: 20px; padding-left: 40px;">Back</a>
